@@ -109,7 +109,7 @@ colcon build --symlink-install --packages-up-to vtr_radar
 wait until it finishes.
 
 
-# Build and Install vtr_testing_radar (this package)
+# Build and Install vtr_radar_masking (this package)
 
 Start a new terminal (**terminal 2**) and **enter the container**
 
@@ -119,7 +119,7 @@ NOTE: again, if you onlhy need to run radar-radar experiements then you only nee
 
 ```
 source ${VTRSRC}/main/install/setup.bash # source the vtr3 environment
-cd ${VTRROOT}/vtr_testing_radar # go to where this repo is located
+cd ${VTRROOT}/vtr_radar_masking # go to where this repo is located
 colcon build --symlink-install  --packages-select vtr_testing_radar
 ```
 
@@ -156,10 +156,16 @@ Inside the `script` folder of all three testing packages (`vtr_testing_<...>`), 
 - `parallel_test_localization.sh`
 
 
-All you need to do is run one of the above bash scripts **inside the contaner**. 
+All you need to do is run one of the above bash scripts **inside the contaner**. Note, you need to set the VTRDATA variable to point to the correct location.
 
 ```
 bash <path to parallel_test_odometry.sh or parallel_test_localization.sh>
+```
+
+For example:
+
+```
+bash ${VTRROOT}/vtr_radar_masking/src/vtr_testing_lidar/script/parallel_test_localization.sh
 ```
 
 Then monitor progress by going to the log file of each test.
